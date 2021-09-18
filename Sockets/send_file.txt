@@ -1,0 +1,5 @@
+Hiii 
+I am manthan. I am from server.
+I am connected to the client server.
+I make this file to send to the client.
+This is file send by server.
