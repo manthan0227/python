@@ -25,6 +25,26 @@ while server_message != "exit":
     # conn.send(file_data)
 
     # print("Data has been transmitted successfully....")
+    
+#Handlers will allow multiple users to use at the same time - Edit this snippet as per your code
 
+def broadcast(message):
+    for client in clients:
+        client.send(message)
+
+
+def handle(client):
+    while True:
+        try:
+            message = client.recv(1024)
+            broadcast(message)
+        except:
+            index = clients.index(client)
+            clients.remove(client)
+            client.close()
+            nickname = nicknames[index]
+            broadcast(f'{nickname} left the chat!'.encode('ascii'))
+            nicknames.remove(nickname)
+            break
 conn.close()
 print("Disconnection......")
