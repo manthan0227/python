@@ -23,6 +23,12 @@ while client_message != 'exit':
     # file.close()
 
     # print("File has been received successfuilyy.....")
+    
+receive_thread = threading.Thread(target=receive)
+receive_thread.start()
+
+write_thread = threading.Thread(target=write)
+write_thread.start()
 
 s.close()
 print("Disconnection.......")
